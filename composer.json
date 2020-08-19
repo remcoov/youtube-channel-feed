@@ -2,7 +2,7 @@
     "name": "remcoov/youtube-channel-feed",
     "description": "This is a Craft CMS widget for getting a feed from a specific Youtube channel.",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": [
         "craft",
         "cms",
