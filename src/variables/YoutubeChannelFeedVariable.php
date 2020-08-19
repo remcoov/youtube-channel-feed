@@ -46,10 +46,20 @@ class YoutubeChannelFeedVariable
      * @return string
      */
 
-    public function getFeed(string $channel_id, int $limit)
+    public function getFeed(string $channel_id, int $limit = 15) : array
     {
-        // $feed = YoutubeChannelFeed::getInstance()->youtubeChannelFeedService->getFeed($channel_id, $limit);
-        // return $feed;
+        $original_feed = YoutubeChannelFeed::getInstance()->youtubeChannelFeedService->getFeed($channel_id, $limit);
+        $new_feed = array();
+        foreach($original_feed as $video) {
+            $new_feed[] = array(
+                'title' => $video['title'],
+                'url' => $video['link']['@attributes']['href'],
+                'id' => str_replace("yt:video:", "", $video['id']),
+                'published' => $video['published'],
+                'embed' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.str_replace("yt:video:", "", $video['id']).'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            );
+        }
+        
+        return $new_feed;
     }
-
 }

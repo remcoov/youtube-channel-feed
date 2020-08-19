@@ -76,16 +76,15 @@ class YoutubeChannelFeedService extends Component
         return $widgetFeed;
     }
 
-    // public function getFeed(string $channel_id, int $limit) : array
-    // {
-    //     $xml_data = file_get_contents('https://www.youtube.com/feeds/videos.xml?channel_id='.$channel_id);
-    //     $xml = simplexml_load_string($xml_data);
-    //     $json = json_encode($xml);
-    //     $youtube_feed = json_decode($json, TRUE);
-    //     $youtube_feed = $youtube_feed['entry'];
-    //     $youtube_feed = array_slice($youtube_feed, 0, $limit);
+    public function getFeed(string $channel_id, int $limit = 15) : array
+    {
+        $xml_data = @file_get_contents('https://www.youtube.com/feeds/videos.xml?channel_id='.$channel_id);
+        $xml = simplexml_load_string($xml_data);
+        $youtube_feed = json_decode(json_encode($xml), TRUE);
+        $youtube_feed = $youtube_feed['entry'];
+        $youtube_feed = array_slice($youtube_feed, 0, $limit);
 
-    //     return $youtube_feed;
-    // }
+        return $youtube_feed;
+    }
 
 }
