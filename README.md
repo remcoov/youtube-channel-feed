@@ -1,6 +1,6 @@
 # Youtube Channel Feed plugin for Craft CMS 3.x
 
-This is a Craft CMS widget for getting a feed from a specific Youtube channel.
+This is a Craft CMS plugin for outputting a Youtube channel feed as a widget, or in your templates via a variable.
 
 ## Requirements
 
