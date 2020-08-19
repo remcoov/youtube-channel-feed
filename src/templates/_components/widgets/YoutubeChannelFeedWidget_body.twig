@@ -1,0 +1,63 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Youtube Channel Feed plugin for Craft CMS
+ *
+ * YoutubeChannelFeedWidget Widget Body
+ *
+ * @author    remcoov
+ * @copyright Copyright (c) 2020 remcoov
+ * @link      https://obaia.nl
+ * @package   YoutubeChannelFeed
+ * @since     1.0.0
+ */
+#}
+
+<h3>{{ latestVideoTitle }}</h3>
+
+<div class="yhf-video-container">
+    <iframe src="https://www.youtube.com/embed/{{ latestVideoId }}" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<table class="yhf-table data fullwidth collapsible">
+    <tbody>
+	{# the 1 in slice removes the first video (which is the big one)
+	and limit sets the limit set by user (minus 1, because of the big one) #}
+    {% for video in youtube_feed|slice(1, (limit ? limit : 5) - 1) %}
+        <tr>
+            <th class="light"><a href="{{ video['link']['@attributes']['href'] }}" class="go" target="_blank">{{ video['title'] }}</a></th>
+			<td> {{ video['published'] | date('Y/m/d')  }} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% css %}
+.yhf-table {
+	margin-top: 15px;
+}
+.yhf-table.data th,
+.yhf-table.data td {
+	padding-left: 0;
+}
+.yhf-table.data td {
+	padding-right: 5px;
+	text-align: right;
+}
+.yhf-video-container {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:30px;
+	height:0;
+	overflow:hidden;
+}
+.yhf-video-container iframe,
+.yhf-video-container object,
+.yhf-video-container embed {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+{% endcss %}

@@ -1,0 +1,50 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Youtube Channel Feed plugin for Craft CMS
+ *
+ * YoutubeChannelFeedWidget Widget Settings
+ *
+ * @author    remcoov
+ * @copyright Copyright (c) 2020 remcoov
+ * @link      https://obaia.nl
+ * @package   YoutubeChannelFeed
+ * @since     1.0.0
+ */
+#}
+
+{# {% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("remcoov\\youtubechannelfeed\\assetbundles\\youtubechannelfeed\\YoutubeChannelFeedAsset") %}
+
+{{ forms.textField({
+    label: 'Message',
+    instructions: 'Enter a message here.',
+    id: 'message',
+    name: 'message',
+    value: widget['message']})
+}} #}
+
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: 'Youtube Channel ID',
+    instructions: 'A 24 character string found in: youtube.com/channel/<b>UCzQUP1qoWDoEbmsQxvdjxgQ</b>',
+    id: 'channel_id',
+    name: 'channel_id',
+    maxlength: '24',
+    value: widget['channel_id']
+    })
+}}
+
+{{ forms.textField({
+    label: 'Limit',
+    instructions: 'Enter a limit here. Max is 15, set by Youtube.',
+    id: 'limit',
+    name: 'limit',
+    min: '1',
+    max: '15',
+    type: 'number',
+    value: widget['limit'] ? widget['limit'] : 5
+    })
+}}

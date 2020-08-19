@@ -1,0 +1,49 @@
+{
+    "name": "remcoov/youtube-channel-feed",
+    "description": "This is a Craft CMS widget for getting a feed from a specific Youtube channel.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "youtube channel feed"
+    ],
+    "support": {
+        "docs": "https://github.com/remcoov/youtube-channel-feed/blob/master/README.md",
+        "issues": "https://github.com/remcoov/youtube-channel-feed/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "remcoov",
+            "homepage": "https://obaia.nl"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "remcoov\\youtubechannelfeed\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Youtube Channel Feed",
+        "handle": "youtube-channel-feed",
+        "developer": "remcoov",
+        "developerUrl": "https://obaia.nl",
+        "documentationUrl": "https://github.com/remcoov/youtube-channel-feed/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/remcoov/youtube-channel-feed/master/CHANGELOG.md",
+        "components": {
+            "youtubeChannelFeedService": "remcoov\\youtubechannelfeed\\services\\YoutubeChannelFeedService"
+        },
+        "class": "remcoov\\youtubechannelfeed\\YoutubeChannelFeed"
+    }
+}

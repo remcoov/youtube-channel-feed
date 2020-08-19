@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Youtube Channel Feed plugin for Craft CMS
+ *
+ * YoutubeChannelFeedField Field Settings
+ *
+ * @author    remcoov
+ * @copyright Copyright (c) 2020 remcoov
+ * @link      https://obaia.nl
+ * @package   YoutubeChannelFeed
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("remcoov\\youtubechannelfeed\\assetbundles\\youtubechannelfeed\\YoutubeChannelFeedAsset") %}
+
+{{ forms.textField({
+    label: 'Some Attribute',
+    instructions: 'Enter some attribute here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: field['someAttribute']})
+}}
