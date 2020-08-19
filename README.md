@@ -43,11 +43,9 @@ Most of the times the sky is the limit, but unfortunately the public feed Youtub
 
 You can use a variable to output a Youtube channels' feed in your twig template(s).
 
-```{% set youtube_feed = craft.youtubeChannelFeed.getFeed() %}```
+The variable has two parameters: **channel id** (required) and **limit** (optional).
 
-The variable has two parameters: the channel id (required) and a limit (optional).
-
-Take a look at the code below, for an example of how to use the variable and all the optional data to output:
+Take a look at the code below, for an example of how to use the variable with its parameters and all the optional data to output:
 
 ```
 {% set youtube_feed = craft.youtubeChannelFeed.getFeed('UCzQUP1qoWDoEbmsQxvdjxgQ', 5) %}
