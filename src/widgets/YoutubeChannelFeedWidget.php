@@ -2,8 +2,6 @@
 /**
  * Youtube Channel Feed plugin for Craft CMS 3.x
  *
- * This plugin contains both a widget and field type for getting a feed from a specific Youtube channel.
- *
  * @link      https://obaia.nl
  * @copyright Copyright (c) 2020 remcoov
  */
