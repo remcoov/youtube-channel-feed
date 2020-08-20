@@ -37,15 +37,15 @@ where the **channel id** would be:
 
 #### Limit
 
-Most of the times the sky is the limit, but unfortunately the public feed Youtube provides of a channel does have a max limit of 15. So, the number you'd provide here should be 15 or less.
+Most of the times the sky is the limit, but the public feed Youtube provides of a channel does have a maximum limit of 15. So, the number you'd provide here should be 15 or less.
 
 ### 2. Variable (in templates)
 
-You can use a variable to output a Youtube channels' feed in your twig template(s).
+You can also use a variable to output a Youtube channel feed in your twig template(s). The variable has two parameters, much like the settings in the widget: **channel id** (required) and **limit** (optional).
 
-The variable has two parameters: **channel id** (required) and **limit** (optional).
+Take a look at the code below, for an example of how to use the variable with its parameters and all the optional data to output.
 
-Take a look at the code below, for an example of how to use the variable with its parameters and all the optional data to output:
+_Note:_ not every video has all the thumbnails available.
 
 ```
 {% set youtube_feed = craft.youtubeChannelFeed.getFeed('UCzQUP1qoWDoEbmsQxvdjxgQ', 5) %}
@@ -53,8 +53,17 @@ Take a look at the code below, for an example of how to use the variable with it
 {% for video in youtube_feed %}
     {{ video['title'] }} <br>
     {{ video['url'] }} <br>
-    {{ video['id'] }} <br>
-    {{ video['published'] }} <br>
+    {{ video['published']|date('Y-m-d H:i:s') }} <br>
     {{ video['embed']|raw }} <br>
+    {{ video['id'] }} <br>
+    {{ video['thumb']['default'] }} <br>
+    {{ video['thumb']['hqdefault'] }} <br>
+    {{ video['thumb']['mqdefault'] }} <br>
+    {{ video['thumb']['sddefault'] }} <br>
+    {{ video['thumb']['maxresdefault'] }} <br>
+    {{ video['preview']['0'] }}" /> <br>
+    {{ video['preview']['1'] }}" /> <br>
+    {{ video['preview']['2'] }}" /> <br>
+    {{ video['preview']['3'] }}" />
 {% endfor %}
 ```

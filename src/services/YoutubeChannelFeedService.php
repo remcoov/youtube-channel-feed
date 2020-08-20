@@ -31,26 +31,6 @@ class YoutubeChannelFeedService extends Component
     // Public Methods
     // =========================================================================
 
-    /**
-     * This function can literally be anything you want, and you can have as many service
-     * functions as you want
-     *
-     * From any other plugin file, call it like this:
-     *
-     *     YoutubeChannelFeed::$plugin->youtubeChannelFeedService->exampleService()
-     *
-     * @return mixed
-     */
-    public function exampleService()
-    {
-        $result = 'something';
-        // Check our Plugin's settings for `someAttribute`
-        if (YoutubeChannelFeed::$plugin->getSettings()->someAttribute) {
-        }
-
-        return $result;
-    }
-
     public function getWidgetFeed(string $channel_id, int $limit) : array
     {
         $xml_data = @file_get_contents('https://www.youtube.com/feeds/videos.xml?channel_id='.$channel_id);
@@ -82,7 +62,33 @@ class YoutubeChannelFeedService extends Component
         $youtube_feed = $youtube_feed['entry'];
         $youtube_feed = array_slice($youtube_feed, 0, $limit);
 
-        return $youtube_feed;
+        $feed = array();
+        foreach($youtube_feed as $video) {
+            $video_id = str_replace("yt:video:", "", $video['id']);
+
+            $feed[] = array(
+                'title' => $video['title'],
+                'url' => $video['link']['@attributes']['href'],
+                'id' => str_replace("yt:video:", "", $video['id']),
+                'published' => $video['published'],
+                'embed' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/'.str_replace("yt:video:", "", $video['id']).'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+                'thumb' => array(
+                    'default' => 'https://img.youtube.com/vi/'.$video_id.'/default.jpg',
+                    'hqdefault' => 'https://img.youtube.com/vi/'.$video_id.'/hqdefault.jpg',
+                    'mqdefault' => 'https://img.youtube.com/vi/'.$video_id.'/mqdefault.jpg',
+                    'sddefault' => 'https://img.youtube.com/vi/'.$video_id.'/sddefault.jpg',
+                    'maxresdefault' => 'https://img.youtube.com/vi/'.$video_id.'/maxresdefault.jpg'
+                ),
+                'preview' => array(
+                    '0' => 'https://img.youtube.com/vi/'.$video_id.'/0.jpg',
+                    '1' => 'https://img.youtube.com/vi/'.$video_id.'/1.jpg',
+                    '2' =>'https://img.youtube.com/vi/'.$video_id.'/2.jpg',
+                    '3' =>'https://img.youtube.com/vi/'.$video_id.'/3.jpg'
+                )
+            );
+        }
+
+        return $feed;
     }
 
 }
