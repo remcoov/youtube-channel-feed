@@ -2,6 +2,8 @@
 
 This is a Craft CMS plugin for outputting a Youtube channel feed as a widget, or in your templates via a variable.
 
+_Note:_ the feed that is being fetched is a public .xml feed that Youtube provides, which has its limits. I'm aware of the fact that when using the Youtube API there is no limit to the feed and that there are more options available, but that was not my intent when making this plugin. So, beware ;-)
+
 ## Requirements
 
 This plugin requires Craft CMS 3.0.0-beta.23 or later.
@@ -61,9 +63,9 @@ _Note:_ not every video has all the thumbnails available.
     {{ video['thumb']['mqdefault'] }} <br>
     {{ video['thumb']['sddefault'] }} <br>
     {{ video['thumb']['maxresdefault'] }} <br>
-    {{ video['preview']['0'] }}" /> <br>
-    {{ video['preview']['1'] }}" /> <br>
-    {{ video['preview']['2'] }}" /> <br>
-    {{ video['preview']['3'] }}" />
+    {{ video['preview']['0'] }} <br>
+    {{ video['preview']['1'] }} <br>
+    {{ video['preview']['2'] }} <br>
+    {{ video['preview']['3'] }}
 {% endfor %}
 ```
