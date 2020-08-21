@@ -53,11 +53,15 @@ _Note:_ not every video has all the thumbnails available.
 {% set youtube_feed = craft.youtubeChannelFeed.getFeed('UCzQUP1qoWDoEbmsQxvdjxgQ', 5) %}
 
 {% for video in youtube_feed %}
+    <h2>Video</h2>
+    {{ video['embed']|raw }} <br>
     {{ video['title'] }} <br>
     {{ video['url'] }} <br>
-    {{ video['published']|date('Y-m-d H:i:s') }} <br>
-    {{ video['embed']|raw }} <br>
     {{ video['id'] }} <br>
+    {{ video['published']|date('Y-m-d H:i:s') }} <br>
+    {{ video['updated']|date('Y-m-d H:i:s') }} <br>
+    <hr>
+    <h2>Thumbnails & preview</h2>
     {{ video['thumb']['default'] }} <br>
     {{ video['thumb']['hqdefault'] }} <br>
     {{ video['thumb']['mqdefault'] }} <br>
@@ -66,6 +70,11 @@ _Note:_ not every video has all the thumbnails available.
     {{ video['preview']['0'] }} <br>
     {{ video['preview']['1'] }} <br>
     {{ video['preview']['2'] }} <br>
-    {{ video['preview']['3'] }}
+    {{ video['preview']['3'] }} <br><br>
+    <hr>
+    <h2>Channel</h2>
+    {{ video['channel_name'] }} <br>
+    {{ video['channel_url'] }} <br>
+    <hr>
 {% endfor %}
 ```
