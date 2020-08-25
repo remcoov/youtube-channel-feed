@@ -7,29 +7,17 @@
  *
  * @author    remcoov
  * @copyright Copyright (c) 2020 remcoov
- * @link      https://obaia.nl
+ * @link      https://github.com/remcoov
  * @package   YoutubeChannelFeed
  * @since     1.0.0
  */
 #}
 
-{# {% import "_includes/forms" as forms %}
-
-{% do view.registerAssetBundle("remcoov\\youtubechannelfeed\\assetbundles\\youtubechannelfeed\\YoutubeChannelFeedAsset") %}
-
-{{ forms.textField({
-    label: 'Message',
-    instructions: 'Enter a message here.',
-    id: 'message',
-    name: 'message',
-    value: widget['message']})
-}} #}
-
 {% import "_includes/forms" as forms %}
 
 {{ forms.textField({
     label: 'Youtube Channel ID',
-    instructions: 'A 24 character string found in: youtube.com/channel/<b>UCzQUP1qoWDoEbmsQxvdjxgQ</b>',
+    instructions: 'A 24 character string found in a channel url: youtube.com/channel/<b>UCzQUP1qoWDoEbmsQxvdjxgQ</b>',
     id: 'channel_id',
     name: 'channel_id',
     maxlength: '24',

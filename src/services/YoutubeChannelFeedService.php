@@ -2,7 +2,7 @@
 /**
  * Youtube Channel Feed plugin for Craft CMS 3.x
  *
- * @link      https://obaia.nl
+ * @link      https://github.com/remcoov
  * @copyright Copyright (c) 2020 remcoov
  */
 
@@ -14,14 +14,6 @@ use Craft;
 use craft\base\Component;
 
 /**
- * YoutubeChannelFeedService Service
- *
- * All of your plugin’s business logic should go in services, including saving data,
- * retrieving data, etc. They provide APIs that your controllers, template variables,
- * and other plugins can interact with.
- *
- * https://craftcms.com/docs/plugins/services
- *
  * @author    remcoov
  * @package   YoutubeChannelFeed
  * @since     1.0.0

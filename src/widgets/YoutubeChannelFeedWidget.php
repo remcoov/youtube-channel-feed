@@ -2,7 +2,7 @@
 /**
  * Youtube Channel Feed plugin for Craft CMS 3.x
  *
- * @link      https://obaia.nl
+ * @link      https://github.com/remcoov
  * @copyright Copyright (c) 2020 remcoov
  */
 
@@ -196,7 +196,7 @@ class YoutubeChannelFeedWidget extends Widget
     public function getSettingsHtml()
     {
         return Craft::$app->getView()->renderTemplate(
-            'youtube-channel-feed/_components/widgets/YoutubeChannelFeedWidget_settings',
+            'youtube-channel-feed/YoutubeChannelFeedWidget_settings',
             [
                 'widget' => $this
             ]
@@ -217,7 +217,7 @@ class YoutubeChannelFeedWidget extends Widget
         $widgetFeed = YoutubeChannelFeed::getInstance()->youtubeChannelFeedService->getWidgetFeed($channel_id, $limit);
 
         return Craft::$app->getView()->renderTemplate(
-            'youtube-channel-feed/_components/widgets/YoutubeChannelFeedWidget_body',
+            'youtube-channel-feed/YoutubeChannelFeedWidget_body',
             [
                 'latestVideoId' => $widgetFeed['latestVideoId'],
                 'latestVideoTitle' => $widgetFeed['latestVideoTitle'],
